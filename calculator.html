@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Advanced Calculator</title>
+    <style>
+      section {
+        width: 350px;
+        height: auto;
+        background: aqua;
+        margin: 4rem auto;
+        border-radius: 14px;
+        padding: 10px;
+        border: 5px solid black;
+      }
+
+      section div {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+      }
+      #display {
+        width: 100%;
+        height: 100px;
+        border-radius: 12px;
+        border: none;
+        outline: none;
+        margin: 1.5rem auto;
+        font-size: 4rem;
+      }
+
+      input[type="button"] {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h1 style="text-align: center; font-weight: bold">Advanced Calculator</h1>
+      <input type="text" id="display" placeholder="0" readonly /><br /><br />
+      <div>
+        <input
+          type="button"
+          value="7"
+          onclick="addToDisplay('7')"
+          style="border-radius: 50%; border: 2px solid black"
+        />
+        <input
+          type="button"
+          value="8"
+          onclick="addToDisplay('8')"
+          style="border-radius: 50%; border: 2px solid black"
+        />
+        <input
+          type="button"
+          value="9"
+          onclick="addToDisplay('9')"
+          style="border-radius: 50%; border: 2px solid black"
+        />
+        <input
+          type="button"
+          value="/"
+          onclick="addToDisplay('/')"
+          style="border-radius: 50%; border: 2px solid black"
+        /><br />
+      </div>
+
+      <div>
+        <input
+          type="button"
+          value="4"
+          onclick="addToDisplay('4')"
+          style="border-radius: 50%; border: 2px solid black"
+        />
+        <input
+          type="button"
+          value="5"
+          onclick="addToDisplay('5')"
+          style="border-radius: 50%; border: 2px solid black"
+        />
+        <input
+          type="button"
+          value="6"
+          onclick="addToDisplay('6')"
+          style="border-radius: 50%; border: 2px solid black"
+        />
+        <input
+          type="button"
+          value="*"
+          onclick="addToDisplay('*')"
+          style="border-radius: 50%; border: 2px solid black"
+        /><br />
+      </div>
+
+      <div>
+        <input
+          type="button"
+          value="1"
+          onclick="addToDisplay('1')"
+          style="border-radius: 50%; border: 2px solid black"
+        />
+        <input
+          type="button"
+          value="2"
+          onclick="addToDisplay('2')"
+          style="border-radius: 50%; border: 2px solid black"
+        />
+        <input
+          type="button"
+          value="3"
+          onclick="addToDisplay('3')"
+          style="border-radius: 50%; border: 2px solid black"
+        />
+        <input
+          type="button"
+          value="-"
+          onclick="addToDisplay('-')"
+          style="border-radius: 50%; border: 2px solid black"
+        /><br />
+      </div>
+
+      <div>
+        <input
+          type="button"
+          value="0"
+          onclick="addToDisplay('0')"
+          style="border-radius: 50%; border: 2px solid black"
+        />
+        <input
+          type="button"
+          value="."
+          onclick="addToDisplay('.')"
+          style="border-radius: 50%; border: 2px solid black"
+        />
+        <input
+          type="button"
+          value="="
+          onclick="calculate()"
+          style="border-radius: 50%; border: 2px solid black"
+        />
+        <input
+          type="button"
+          value="+"
+          onclick="addToDisplay('+')"
+          style="border-radius: 50%; border: 2px solid black"
+        /><br />
+      </div>
+
+      <div>
+        <input
+          type="button"
+          value="C"
+          onclick="clearDisplay()"
+          style="border-radius: 50%; border: 2px solid black"
+        />
+        <input
+          type="button"
+          value="S"
+          onclick="storeInMemory()"
+          style="border-radius: 50%; border: 2px solid black"
+        />
+        <input
+          type="button"
+          value="R"
+          onclick="recallFromMemory()"
+          style="border-radius: 50%; border: 2px solid black"
+        />
+        <input
+          type="button"
+          value="M"
+          onclick="clearMemory()"
+          style="border-radius: 50%; border: 2px solid black"
+        /><br />
+      </div>
+    </section>
+
+    <script>
+      let memory = null;
+
+      
+      function addToDisplay(value) {
+        document.getElementById("display").value += value;
+      }
+
+      
+
+      function calculate() {
+        let expression = document.getElementById("display").value;
+        let result = eval(expression);
+        document.getElementById("display").value = result;
+      }
+
+      function clearDisplay() {
+        document.getElementById("display").value = null;
+      }
+
+      function storeInMemory() {
+        memory = document.getElementById("display").value;
+      }
+
+      function recallFromMemory() {
+        if (memory !== null) {
+          document.getElementById("display").value += memory;
+        }
+      }
+
+      function clearMemory() {
+        memory = null;
+      }
+    </script>
+  </body>
+</html>
